@@ -2,3 +2,7 @@
     font-family: OSanse;
     src: url(/resources/fonts/OpenSans-Regular.ttf);
 }
+
+.logo {
+    font-family: 'Noto Sans', sans-serif;    
+}
