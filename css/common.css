@@ -277,11 +277,11 @@ li{
 }
 
   /*EFFECTS for section "OurProduction"*/
-.productPrevImg:hover .productPrevImgDescription {
+  .contentContainer#products .productPrevImg:hover .productPrevImgDescription {
     transform: translate(0%, 0%);
 }
 
-.productPrevImg:focus .productPrevImgDescription {
+.contentContainer#products .productPrevImg:focus .productPrevImgDescription {
     transform: translate(0%, 0%);
 }
 
