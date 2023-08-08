@@ -1,0 +1,28 @@
+.bttn{cursor: pointer}
+.center{margin: 0 auto; display: block; width: auto; text-align: center;}
+.clear{clear: both}
+.centertext{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.flex{display: flex}
+
+.hidden{display: none}
+
+.transparent{
+    opacity: 0;
+}
+
+.justifytxt{
+    text-align: justify;
+}
+
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    height: inherit;
+}
