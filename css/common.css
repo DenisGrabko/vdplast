@@ -224,7 +224,7 @@ li{
     max-width: 100%;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(/images/logo.jpg) no-repeat;
+    background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(/images/2x-permission.jpg) no-repeat;
     background-position: center;
     background-size: cover;
 }
