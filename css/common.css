@@ -234,6 +234,7 @@ screen and (min-resolution: 192dpi) and (min-width: 428px),
 screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .contentContainer#header {
         background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(../images/for-preview.jpg) no-repeat;
+        background-size: cover;
     }
 }
 
@@ -496,6 +497,7 @@ screen and (min-resolution: 192dpi) and (min-width: 428px),
 screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .contentContainer#header {
         background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(../images/for-preview.jpg) no-repeat;
+        background-size: cover;
     }
     .productionImg {
         background-image: url(../images/33.jpg);
