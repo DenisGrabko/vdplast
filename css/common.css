@@ -392,6 +392,10 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         padding: 0;
     }
 
+    .container {
+        height: 100px;
+    }
+
     .logoContainer {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -399,12 +403,20 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     }
        
     .logo {
-        width: 130px;        
+        width: 130px;
+        font-size: 2.1em;        
     } 
     
     .logoUnderline {
-        width: 130px;
+        width: 170px;
         margin: 0;
+        font-size: 1.1em;
+    }
+
+    .lineToggleStick {
+        width: 62px !important;
+        height: 3px !important;
+        margin-bottom: 9px !important;
     }
 
     .contentContainer#products .productPrevImg {
