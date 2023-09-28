@@ -258,7 +258,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#products .productPrevImg{
     margin: 0 .5em .5em .5em;
     position: relative;
-    height: 370px;
+    height: 270px;
     overflow: hidden;
 }
 
@@ -394,7 +394,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .logoContainer {
         margin-top: 5px;
         margin-bottom: 5px;
-        
+        margin-left: 15px;
     }
        
     .logo {
@@ -404,6 +404,14 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .logoUnderline {
         width: 130px;
         margin: 0;
+    }
+
+    .contentContainer#products .productPrevImg {
+        height: 370px;
+    }
+
+    .productPrevImgPHOTO {
+        height: 370px !important;
     }
 
     .mheadNavigation {
