@@ -427,6 +427,10 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         height: 400px !important;
     }
 
+    .phone {
+        margin-top: 86px !important;
+    }
+
     #masthead .container #mheadRightContainer nav section a {
          margin: 0;
          font-size: 2.7em;
