@@ -35,18 +35,15 @@ function main(){
         }
 
 
-    $DOM.mheadToggle.addEventListener('click', ()=>{
-
-        if(window.getComputedStyle($DOM.mheadNavigation).getPropertyValue('right') != '0px'){
+    $DOM.mheadToggle.addEventListener('click', () => {
+        if (window.getComputedStyle($DOM.mheadNavigation).getPropertyValue('right') != '0px') {
             $DOM.mheadNavigation.style.cssText = 'right: 0';
             $DOM.mheadToggle.dataset.checked = 'true';
-        }
-        else{
+        } else {
             $DOM.mheadNavigation.style.cssText = '';
             $DOM.mheadToggle.dataset.checked = 'false';
         }
-
-    })
+    });
 
     $DOM.langSw.addEventListener('click', ()=>{
 
@@ -74,6 +71,51 @@ function main(){
                 })
             }
 
-
+            
 
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const listContainerMobile = document.getElementById('mheadRightContainer');
+    const listContainerMobileToggle = document.getElementById('mheadToggle');
+    const productsLink = document.querySelector('a[href="#products"]');
+    const productionLink = document.querySelector('a[href="#production"]');
+    const contactsLink = document.querySelector('a[href="#contacts"]');
+    const contentContainer = document.querySelectorAll('.contentContainer');
+
+    // Обработчик клика на кнопку открытия вкладки
+    listContainerMobileToggle.addEventListener('click', () => {
+        
+        if (listContainerMobile.style.right === '0px' || listContainerMobile.style.right === '') {
+            listContainerMobile.style.right = '-750px';
+        } else {
+            listContainerMobile.style.right = '0px';
+        }
+    });
+
+    // Обработчик клика на вкладку "Продукція"
+    productsLink.addEventListener('click', () => {
+        listContainerMobile.style.right = '0px';
+    });
+
+    // Обработчик клика на вкладку "Виробництво"
+    productionLink.addEventListener('click', () => {
+        listContainerMobile.style.right = '0px';
+    });
+
+    // Обработчик клика на вкладку "Контакти"
+    contactsLink.addEventListener('click', () => {
+        listContainerMobile.style.right = '0px';
+    });
+
+    // Обработчик клика на область вне вкладки
+    document.addEventListener('click', (e) => {
+        if (!listContainerMobile.contains(e.target) && !contentContainer.contains(e.target)) {
+            listContainerMobile.style.right = '0px';
+        }
+    });
+});
+

@@ -121,7 +121,7 @@ li{
     font-size: 1.1em;
     letter-spacing: 0.75px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 0;
 } 
 
@@ -132,7 +132,7 @@ li{
     letter-spacing: 1px;
     text-indent: 0%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 0;
     margin-right: auto;
     margin-left: auto;
@@ -258,7 +258,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#products .productPrevImg{
     margin: 0 .5em .5em .5em;
     position: relative;
-    height: 290px;
+    height: 370px;
     overflow: hidden;
 }
 
@@ -357,11 +357,13 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 #footer .container
     #footerLeftContainer{
         text-align: left;
+        margin-left: 15px;
 }
 
 #footer .container
     #footerRightContainer{
         text-align: right;
+        margin-right: 15px;
 }
 
 #footer #footerDivider{
@@ -404,16 +406,28 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         margin: 0;
     }
 
-    #masthead .container #mheadRightContainer{
+    .mheadNavigation {
         position: fixed;
         z-index: -1;
         top: 0;
-        right: -70vw;        
+        right: -750px;        
         display: block;
         background-color: #ffffff;
         width: 70vw;
         height: 100vh;
-        transition: right .4s cubic-bezier(0.77,0.2,0.05,1.0);
+        transition: right .4s cubic-bezier(0.77,0.2,0.88,1.0);
+    }
+
+    #masthead .container #mheadRightContainer{
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        right: -750px;        
+        display: block;
+        background-color: #ffffff;
+        width: 70vw;
+        height: 100vh;
+        transition: right .4s cubic-bezier(0.77,0.2,0.88,1.0);
     }
 
     #masthead .container #mheadRightContainer .mheadWrap{display: block}
@@ -473,7 +487,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 screen and (min-resolution: 192dpi) and (min-width: 428px),
 screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .contentContainer#header {
-        background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(../images/2x-permission.jpg) no-repeat;
+        background: linear-gradient(rgba(0,0,0,.53), rgba(0, 0, 0, 0.352)), url(../images/for-preview.jpg) no-repeat;
     }
     .productionImg {
         background-image: url(../images/33.jpg);
