@@ -16,6 +16,7 @@ body{
     width: 100%;
     scroll-behavior: smooth !important;
     font-family: sans-serif;
+    /* background-color: #c0baba; */
 }
 
 a{
