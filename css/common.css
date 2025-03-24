@@ -319,12 +319,14 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
 
 .contentContainer#production .productionImg .middle{
+    display: flex;
+    text-align: center;
     color: #ffffff;
     font-size: 1.2em;
     background: rgba(0,0,0,.3);
 }
 
-.contentContainer#contacts .centertext .phone{
+.contentContainer#contacts .centertext .phone .phoneSecond{
     font-size: 1.5em;
     color: var(--main-color);
     display: inline-block;
@@ -439,6 +441,9 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     .phone {
         margin-top: 86px !important;
     }
+.phoneSecond {
+    margin-top: 10px !important;
+}
 
         .mheadMenuNavigator {
             z-index: 2;
