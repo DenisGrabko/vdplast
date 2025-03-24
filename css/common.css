@@ -164,8 +164,7 @@ li{
     margin-left: 2em;
 }
 
-#masthead .container #mheadRightContainerInfo{
-    margin-left: 2em;
+#masthead .container #mheadRightContainerInfo{    
     color: var(--main-color);
     font-size: 1.1em;
     display: none;
