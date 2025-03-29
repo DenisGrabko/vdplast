@@ -1,7 +1,7 @@
 "use strict";
 
 function getData(url, obj) {
-  let req = fetch(url, {
+  fetch(url, {
     method: "POST",
     body: "",
   })
@@ -40,15 +40,12 @@ function main() {
   }
 
   $DOM.mheadToggle.addEventListener("click", () => {
-    if (
-      window.getComputedStyle($DOM.mheadNavigation).getPropertyValue("right") !=
-      "0px"
-    ) {
-      $DOM.mheadNavigation.style.cssText = "right: 0";
-      $DOM.mheadToggle.dataset.checked = "true";
-    } else {
-      $DOM.mheadNavigation.style.cssText = "";
+    if ($DOM.mheadNavigation.style.right === "0px") {
+      $DOM.mheadNavigation.style.right = "-750px";
       $DOM.mheadToggle.dataset.checked = "false";
+    } else {
+      $DOM.mheadNavigation.style.right = "0px";
+      $DOM.mheadToggle.dataset.checked = "true";
     }
   });
 
@@ -69,39 +66,40 @@ function main() {
 document.addEventListener("DOMContentLoaded", function () {
   const listContainerMobile = document.getElementById("mheadRightContainer");
   const listContainerMobileToggle = document.getElementById("mheadToggle");
-  const productsLink = document.querySelector('a[href="#products"]');
-  const productionLink = document.querySelector('a[href="#production"]');
-  const contactsLink = document.querySelector('a[href="#contacts"]');
-  const contentContainer = document.querySelectorAll(".contentContainer");
 
-  // Обработчик клика на кнопку открытия вкладки
-  listContainerMobileToggle.addEventListener("click", () => {
-    if (
-      listContainerMobile.style.right === "0px" ||
-      listContainerMobile.style.right === ""
-    ) {
+  // Получаем только нужные пункты меню
+  const menuSections = document.querySelectorAll(
+    '#mheadRightContainer a[href="#products"], ' +
+      '#mheadRightContainer a[href="#production"], ' +
+      '#mheadRightContainer a[href="#contacts"]'
+  );
+
+  // Исправленный обработчик клика на кнопку открытия меню
+  listContainerMobileToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const currentRight = window.getComputedStyle(listContainerMobile).right;
+
+    if (currentRight === "0px") {
       listContainerMobile.style.right = "-750px";
     } else {
       listContainerMobile.style.right = "0px";
     }
   });
 
-  // Обработчик клика на вкладку "Виробництво"
-  productionLink.addEventListener("click", () => {
-    listContainerMobile.style.right = "0px";
+  // Закрываем боковое меню при клике на один из разделов
+  menuSections.forEach((section) => {
+    section.addEventListener("click", () => {
+      listContainerMobile.style.right = "-750px";
+    });
   });
 
-  // Обработчик клика на вкладку "Контакти"
-  contactsLink.addEventListener("click", () => {
-    listContainerMobile.style.right = "0px";
-  });
-
-  // Обработчик клика на область вне вкладки
+  // Обработчик клика вне меню
   document.addEventListener("click", (e) => {
     if (
-      ![...contentContainer].every((container) => !container.contains(e.target))
+      !e.target.closest("#mheadRightContainer") &&
+      !e.target.closest("#mheadToggle")
     ) {
-      listContainerMobile.style.right = "0px";
+      listContainerMobile.style.right = "-750px";
     }
   });
 });
