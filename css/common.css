@@ -550,6 +550,43 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         background-image: url(../images/33.jpg);
     }
 }
-   
+}
+/* По умолчанию меню видимо для всех устройств */
+#mheadRightContainer {
+    display: block; /* Меню видно по умолчанию */
+}
 
+/* Стили для десктопа */
+@media (min-width: 769px) {
+    #mheadRightContainer {
+        position: static; /* Убираем позиционирование */
+        right: auto; /* Убираем влияние свойства right */
+        display: block; /* Меню всегда видимо */
+    }
+
+    #mheadToggle {
+        display: none; /* Скрываем бургер-меню на десктопе */
+    }
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    #mheadRightContainer {
+        position: absolute;
+        top: 0;
+        right: -100%; /* Скрываем меню по умолчанию */
+        width: 250px; /* Установите нужную ширину */
+        height: 100%;
+        background: #fff; /* Цвет фона меню */
+        transition: right 0.3s ease;
+        display: block; /* Убедимся, что меню отображается как блок */
+    }
+
+    #mheadRightContainer.open {
+        right: 0; /* Показываем меню при добавлении класса open */
+    }
+
+    #mheadToggle {
+        display: block; /* Показываем бургер-меню на мобильных */
+    }
 }
