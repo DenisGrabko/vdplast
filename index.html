@@ -395,47 +395,43 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
-// Функция для закрытия меню
-function closeMenu() {
+// Функция для открытия/закрытия меню на мобильных устройствах
+function toggleMenu() {
     if (isMobile()) {
-        listContainerMobile.style.right = "-100%";
-        isMenuOpen = false;
+        if (!isMenuOpen) {
+            listContainerMobile.classList.add("open");
+            isMenuOpen = true;
+        } else {
+            listContainerMobile.classList.remove("open");
+            isMenuOpen = false;
+        }
     }
 }
 
-// Инициализация начального состояния меню
-document.addEventListener("DOMContentLoaded", () => {
-    if (!isMobile()) {
-        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
-    } else {
-        listContainerMobile.style.right = "-100%"; // На мобильных устройствах скрыто по умолчанию
-    }
-});
-
-// Обработчик клика на бургер-меню
+// Обработчик клика на бургер-меню (только для мобильных)
 listContainerMobileToggle.addEventListener("click", () => {
-    if (!isMenuOpen) {
-        listContainerMobile.style.right = "0";
-        isMenuOpen = true;
-    } else {
-        closeMenu();
-    }
+    toggleMenu();
 });
 
 // Закрытие меню при клике на ссылки навигации (только на мобильных)
 navigationLinks.forEach(link => {
     link.addEventListener("click", () => {
-        closeMenu();
+        if (isMobile()) {
+            listContainerMobile.classList.remove("open");
+            isMenuOpen = false;
+        }
     });
 });
 
-// Обновление состояния меню при изменении размера окна
+// При изменении размера окна сбрасываем состояние меню на мобильных
 window.addEventListener("resize", () => {
-    if (!isMobile()) {
-        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
+    if (isMobile()) {
+        if (!isMenuOpen) {
+            listContainerMobile.classList.remove("open");
+        }
+    } else {
+        listContainerMobile.classList.remove("open"); // Убираем класс open на десктопе
         isMenuOpen = false;
-    } else if (!isMenuOpen) {
-        listContainerMobile.style.right = "-100%"; // На мобильных скрываем, если не открыто
     }
 });
 </script>
