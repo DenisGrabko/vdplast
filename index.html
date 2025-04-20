@@ -382,49 +382,54 @@
 
     <script>
       // Объявляем переменные для отслеживания состояния
-      let isMenuOpen = false; // Флаг, показывающий, открыто ли меню
+let isMenuOpen = false; // Флаг, показывающий, открыто ли меню
 
-      // Получаем ссылки на элементы меню и разделы
-      const menuToggle = document.getElementById("mheadToggle");
-      const productsSection = document.getElementById("products");
-      const productionSection = document.getElementById("production");
-      const contactsSection = document.getElementById("contacts");
+// Получаем ссылки на элементы меню и разделы
+const menuToggle = document.getElementById("mheadToggle");
+const productsSection = document.getElementById("products");
+const productionSection = document.getElementById("production");
+const contactsSection = document.getElementById("contacts");
 
-      // Функция для закрытия меню
-      function closeMenu() {
-        // Закрываем меню
+// Функция для проверки, является ли устройство мобильным
+function isMobile() {
+    return window.innerWidth <= 768; // Порог для мобильных устройств
+}
+
+// Функция для закрытия меню
+function closeMenu() {
+    if (isMobile()) { // Закрываем меню только на мобильных устройствах
         listContainerMobile.style.right = "-100%";
-        // Сбрасываем флаг
         isMenuOpen = false;
-      }
+    }
+}
 
-      // Обработчик клика на кнопку меню
-      listContainerMobileToggle.addEventListener("click", () => {
-        // Если меню не открыто, открываем его
-        if (!isMenuOpen) {
-          listContainerMobile.style.right = "0";
-          isMenuOpen = true;
-        } else {
-          // Если меню уже открыто, закрываем его
-          closeMenu();
-        }
-      });
-
-      // Обработчики клика на разделы
-      productsSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
+// Обработчик клика на кнопку меню
+listContainerMobileToggle.addEventListener("click", () => {
+    // Если меню не открыто, открываем его
+    if (!isMenuOpen) {
+        listContainerMobile.style.right = "0";
+        isMenuOpen = true;
+    } else {
+        // Если меню уже открыто, закрываем его
         closeMenu();
-      });
+    }
+});
 
-      productionSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
-        closeMenu();
-      });
+// Обработчики клика на разделы
+productsSection.addEventListener("click", () => {
+    // Закрываем меню при клике на раздел, если это мобильное устройство
+    closeMenu();
+});
 
-      contactsSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
-        closeMenu();
-      });
+productionSection.addEventListener("click", () => {
+    // Закрываем меню при клике на раздел, если это мобильное устройство
+    closeMenu();
+});
+
+contactsSection.addEventListener("click", () => {
+    // Закрываем меню при клике на раздел, если это мобильное устройство
+    closeMenu();
+});
     </script>
   </body>
 </html>
