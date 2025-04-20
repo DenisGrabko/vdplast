@@ -381,55 +381,64 @@
     </script>
 
     <script>
-      // Объявляем переменные для отслеживания состояния
-let isMenuOpen = false; // Флаг, показывающий, открыто ли меню
+     <script>
+// Объявляем переменные для отслеживания состояния
+let isMenuOpen = false;
 
-// Получаем ссылки на элементы меню и разделы
-const menuToggle = document.getElementById("mheadToggle");
-const productsSection = document.getElementById("products");
-const productionSection = document.getElementById("production");
-const contactsSection = document.getElementById("contacts");
+// Получаем элементы
+const listContainerMobile = document.getElementById("mheadRightContainer");
+const listContainerMobileToggle = document.getElementById("mheadToggle");
+const navigationLinks = document.querySelectorAll("a.sectionNavigarionItem");
 
 // Функция для проверки, является ли устройство мобильным
 function isMobile() {
-    return window.innerWidth <= 768; // Порог для мобильных устройств
+    return window.innerWidth <= 768;
 }
 
 // Функция для закрытия меню
 function closeMenu() {
-    if (isMobile()) { // Закрываем меню только на мобильных устройствах
+    if (isMobile()) {
         listContainerMobile.style.right = "-100%";
         isMenuOpen = false;
     }
 }
 
-// Обработчик клика на кнопку меню
+// Инициализация начального состояния меню
+document.addEventListener("DOMContentLoaded", () => {
+    if (!isMobile()) {
+        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
+    } else {
+        listContainerMobile.style.right = "-100%"; // На мобильных устройствах скрыто по умолчанию
+    }
+});
+
+// Обработчик клика на бургер-меню
 listContainerMobileToggle.addEventListener("click", () => {
-    // Если меню не открыто, открываем его
     if (!isMenuOpen) {
         listContainerMobile.style.right = "0";
         isMenuOpen = true;
     } else {
-        // Если меню уже открыто, закрываем его
         closeMenu();
     }
 });
 
-// Обработчики клика на разделы
-productsSection.addEventListener("click", () => {
-    // Закрываем меню при клике на раздел, если это мобильное устройство
-    closeMenu();
+// Закрытие меню при клике на ссылки навигации (только на мобильных)
+navigationLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        closeMenu();
+    });
 });
 
-productionSection.addEventListener("click", () => {
-    // Закрываем меню при клике на раздел, если это мобильное устройство
-    closeMenu();
+// Обновление состояния меню при изменении размера окна
+window.addEventListener("resize", () => {
+    if (!isMobile()) {
+        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
+        isMenuOpen = false;
+    } else if (!isMenuOpen) {
+        listContainerMobile.style.right = "-100%"; // На мобильных скрываем, если не открыто
+    }
 });
-
-contactsSection.addEventListener("click", () => {
-    // Закрываем меню при клике на раздел, если это мобильное устройство
-    closeMenu();
-});
+</script>
     </script>
   </body>
 </html>
