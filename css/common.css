@@ -551,21 +551,30 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     }
 }
 }
-/* По умолчанию меню видимо для всех устройств */
+/*Это я добавил ниже, надо будет удалить*/
+
+/* По умолчанию меню видимо */
 #mheadRightContainer {
-    display: block; /* Меню видно по умолчанию */
+    width: auto; /* Убираем фиксированную ширину для десктопа */
+    height: auto;
+    background: none; /* Убираем фон, он нужен только на мобильных */
+    transition: none; /* Убираем переход, он нужен только на мобильных */
 }
 
 /* Стили для десктопа */
 @media (min-width: 769px) {
     #mheadRightContainer {
-        position: static; /* Убираем позиционирование */
+        position: static; /* Меню всегда видимо */
         right: auto; /* Убираем влияние свойства right */
-        display: block; /* Меню всегда видимо */
+        display: block; /* Убедимся, что меню отображается */
     }
 
     #mheadToggle {
         display: none; /* Скрываем бургер-меню на десктопе */
+    }
+
+    #mheadRightContainerInfo {
+        display: block; /* Убедимся, что информация видима */
     }
 }
 
@@ -578,15 +587,19 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         width: 250px; /* Установите нужную ширину */
         height: 100%;
         background: #fff; /* Цвет фона меню */
-        transition: right 0.3s ease;
-        display: block; /* Убедимся, что меню отображается как блок */
+        transition: right 0.3s ease; /* Плавный переход */
+        z-index: 1000; /* Убедимся, что меню поверх других элементов */
     }
 
     #mheadRightContainer.open {
-        right: 0; /* Показываем меню при добавлении класса open */
+        right: 0; /* Показываем меню */
     }
 
     #mheadToggle {
         display: block; /* Показываем бургер-меню на мобильных */
+    }
+
+    #mheadRightContainerInfo {
+        display: block; /* Убедимся, что информация видима */
     }
 }
