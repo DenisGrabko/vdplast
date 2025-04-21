@@ -395,7 +395,7 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
-// Функция для переключения меню (только на мобильных)
+// Функция для открытия/закрытия меню на мобильных устройствах
 function toggleMenu() {
     if (isMobile()) {
         if (!isMenuOpen) {
@@ -408,7 +408,7 @@ function toggleMenu() {
     }
 }
 
-// Обработчик клика на бургер-меню
+// Обработчик клика на бургер-меню (только для мобильных)
 listContainerMobileToggle.addEventListener("click", () => {
     toggleMenu();
 });
@@ -423,13 +423,15 @@ navigationLinks.forEach(link => {
     });
 });
 
-// При изменении размера окна сбрасываем состояние на мобильных
+// При изменении размера окна сбрасываем состояние меню на мобильных
 window.addEventListener("resize", () => {
-    if (!isMobile()) {
+    if (isMobile()) {
+        if (!isMenuOpen) {
+            listContainerMobile.classList.remove("open");
+        }
+    } else {
         listContainerMobile.classList.remove("open"); // Убираем класс open на десктопе
         isMenuOpen = false;
-    } else if (!isMenuOpen) {
-        listContainerMobile.classList.remove("open"); // Убедимся, что меню скрыто на мобильных, если не открыто
     }
 });
 </script>
