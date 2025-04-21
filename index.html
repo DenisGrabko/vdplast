@@ -395,43 +395,47 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
-// Функция для открытия/закрытия меню на мобильных устройствах
-function toggleMenu() {
+// Функция для закрытия меню
+function closeMenu() {
     if (isMobile()) {
-        if (!isMenuOpen) {
-            listContainerMobile.classList.add("open");
-            isMenuOpen = true;
-        } else {
-            listContainerMobile.classList.remove("open");
-            isMenuOpen = false;
-        }
+        listContainerMobile.style.right = "-100%";
+        isMenuOpen = false;
     }
 }
 
-// Обработчик клика на бургер-меню (только для мобильных)
+// Инициализация начального состояния меню
+document.addEventListener("DOMContentLoaded", () => {
+    if (!isMobile()) {
+        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
+    } else {
+        listContainerMobile.style.right = "-100%"; // На мобильных устройствах скрыто по умолчанию
+    }
+});
+
+// Обработчик клика на бургер-меню
 listContainerMobileToggle.addEventListener("click", () => {
-    toggleMenu();
+    if (!isMenuOpen) {
+        listContainerMobile.style.right = "0";
+        isMenuOpen = true;
+    } else {
+        closeMenu();
+    }
 });
 
 // Закрытие меню при клике на ссылки навигации (только на мобильных)
 navigationLinks.forEach(link => {
     link.addEventListener("click", () => {
-        if (isMobile()) {
-            listContainerMobile.classList.remove("open");
-            isMenuOpen = false;
-        }
+        closeMenu();
     });
 });
 
-// При изменении размера окна сбрасываем состояние меню на мобильных
+// Обновление состояния меню при изменении размера окна
 window.addEventListener("resize", () => {
-    if (isMobile()) {
-        if (!isMenuOpen) {
-            listContainerMobile.classList.remove("open");
-        }
-    } else {
-        listContainerMobile.classList.remove("open"); // Убираем класс open на десктопе
+    if (!isMobile()) {
+        listContainerMobile.style.right = "0"; // На десктопе меню всегда видимо
         isMenuOpen = false;
+    } else if (!isMenuOpen) {
+        listContainerMobile.style.right = "-100%"; // На мобильных скрываем, если не открыто
     }
 });
 </script>
