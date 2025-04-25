@@ -527,9 +527,9 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     }
 }
 
-/* Стили для десктопа */
+/* Стили для десктопа с максимальной специфичностью */
 @media (min-width: 1001px) {
-    #mheadRightContainer {
+    #masthead .container #mheadRightContainer {
         position: static !important;
         right: auto !important;
         display: flex !important;
@@ -538,36 +538,47 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         height: auto !important;
         visibility: visible !important;
         opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
-    #mheadRightContainer.open {
+    #masthead .container #mheadRightContainer.open {
         position: static !important;
         right: auto !important;
+        display: flex !important;
+        transform: none !important;
+        transition: none !important;
     }
 
-    #mheadToggle {
+    #masthead .container #mheadToggle {
         display: none !important;
     }
 
-    #mheadRightContainerInfo {
+    #masthead .container #mheadRightContainerInfo {
         display: none !important;
     }
 
-    #mheadRightContainer nav {
+    #masthead .container #mheadRightContainer nav {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
-    #mheadRightContainer nav section {
+    #masthead .container #mheadRightContainer nav section {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
-    #mheadRightContainer nav section a {
+    #masthead .container #mheadRightContainer nav section a {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
