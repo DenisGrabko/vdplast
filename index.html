@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ukr">
-  <script src="./js/common.js"></script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -14,7 +13,6 @@
     />
     <meta
       property="og:description"
-.store
       content="Високоякісні поліетиленові плівки та пакувальні матеріали від компанії ВІДІПЛАСТ."
     />
     <meta
@@ -291,7 +289,7 @@
         <div class="centertext">
           <div class="container">
             <br />
-            ​ТОВ "ВІДІПЛАСТ"
+            ТОВ "ВІДІПЛАСТ"
             <br />
             <sub>
               ЄДРПОУ 45385844
@@ -315,7 +313,7 @@
         <!-- FOOTER -->
         <div class="container">
           <div id="footerLeftContainer">
-            ​ТОВ "ВІДІПЛАСТ"<br />
+            ТОВ "ВІДІПЛАСТ"<br />
             Київ 04072, вул. Автозаводська, б. 18<br />
             ЄДРПОУ 45385844<br />
             Україна
@@ -327,7 +325,6 @@
           </div>
         </div>
       </div>
-      <!---->
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -346,16 +343,24 @@
         // Функция для закрытия меню
         function closeMenu() {
           if (isMobile()) {
+            console.log("Closing menu on mobile");
             menuContainer.style.right = "-750px";
             menuContainer.classList.remove("open");
+            menuToggle.setAttribute("data-checked", "false");
+          } else {
+            console.log("Close menu skipped on desktop");
           }
         }
 
         // Функция для открытия меню
         function openMenu() {
           if (isMobile()) {
+            console.log("Opening menu on mobile");
             menuContainer.style.right = "0";
             menuContainer.classList.add("open");
+            menuToggle.setAttribute("data-checked", "true");
+          } else {
+            console.log("Open menu skipped on desktop");
           }
         }
 
@@ -363,16 +368,16 @@
         let isMenuOpen = false;
 
         // Обработчик клика на кнопку меню
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          console.log("Menu toggle clicked, isMobile:", isMobile());
           if (isMobile()) {
             if (!isMenuOpen) {
               openMenu();
               isMenuOpen = true;
-              menuToggle.setAttribute("data-checked", "true");
             } else {
               closeMenu();
               isMenuOpen = false;
-              menuToggle.setAttribute("data-checked", "false");
             }
           }
         });
@@ -380,9 +385,12 @@
         // Закрытие меню при клике на разделы (только на мобильных)
         sections.forEach((section) => {
           section.addEventListener("click", (e) => {
-            if (isMobile()) {
+            // Проверяем, что клик был по самому разделу, а не по дочерним элементам
+            if (e.target === section && isMobile()) {
+              console.log(`Section ${section.id} clicked, closing menu`);
               closeMenu();
-              menuToggle.setAttribute("data-checked", "false");
+            } else {
+              console.log(`Section ${section.id} click ignored, isMobile: ${isMobile()}`);
             }
           });
         });
@@ -390,6 +398,7 @@
         // Обработчик изменения размера окна
         window.addEventListener("resize", () => {
           if (!isMobile()) {
+            console.log("Window resized to desktop, resetting menu styles");
             menuContainer.style.right = "";
             menuContainer.classList.remove("open");
             isMenuOpen = false;
@@ -402,6 +411,8 @@
         anchorLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
+            e.stopPropagation();
+            console.log(`Anchor link ${this.getAttribute("href")} clicked, isMobile: ${isMobile()}`);
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
             if (targetElement) {
@@ -413,10 +424,14 @@
               });
               if (isMobile()) {
                 closeMenu();
-                menuToggle.setAttribute("data-checked", "false");
               }
             }
           });
+        });
+
+        // Отладка: лог при любом клике по документу
+        document.addEventListener("click", (e) => {
+          console.log("Document clicked, target:", e.target, "isMobile:", isMobile());
         });
       });
     </script>
