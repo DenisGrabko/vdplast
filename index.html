@@ -362,82 +362,62 @@
         });
       });
     </script>
-    <script>
-// Объявляем переменные для отслеживания состояния
-let isMenuOpen = false;
+   <script>
+   // Объявляем переменные для отслеживания состояния
+   let isMenuOpen = false;
 
-// Получаем элементы
-const listContainerMobile = document.getElementById("mheadRightContainer");
-const listContainerMobileToggle = document.getElementById("mheadToggle");
-const navigationLinks = document.querySelectorAll("a.sectionNavigarionItem");
+   // Получаем элементы
+   const listContainerMobile = document.getElementById("mheadRightContainer");
+   const listContainerMobileToggle = document.getElementById("mheadToggle");
+   const navigationLinks = document.querySelectorAll("a.sectionNavigarionItem");
 
-// Функция для проверки, является ли устройство мобильным
-function isMobile() {
-    return window.innerWidth <= 1000; // Соответствует медиа-запросу в CSS
-}
+   // Функция для проверки, является ли устройство мобильным
+   function isMobile() {
+       return window.innerWidth <= 1000;
+   }
 
-// Функция для переключения меню (только на мобильных)
-function toggleMenu() {
-    if (isMobile()) {
-        if (!isMenuOpen) {
-            listContainerMobile.classList.add("open");
-            isMenuOpen = true;
-            listContainerMobileToggle.setAttribute("data-checked", "true");
-        } else {
-            listContainerMobile.classList.remove("open");
-            isMenuOpen = false;
-            listContainerMobileToggle.setAttribute("data-checked", "false");
-        }
-    }
-}
+   // Функция для переключения меню (только на мобильных)
+   function toggleMenu() {
+       if (!isMobile()) return; // Пропускаем на десктопе
+       if (!isMenuOpen) {
+           listContainerMobile.classList.add("open");
+           isMenuOpen = true;
+           listContainerMobileToggle.setAttribute("data-checked", "true");
+       } else {
+           listContainerMobile.classList.remove("open");
+           isMenuOpen = false;
+           listContainerMobileToggle.setAttribute("data-checked", "false");
+       }
+   }
 
-// Обработчик клика на бургер-меню (только для мобильных)
-listContainerMobileToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // Предотвращаем всплытие события
-    toggleMenu();
-});
+   // Обработчик клика на бургер-меню
+   listContainerMobileToggle.addEventListener("click", (e) => {
+       e.stopPropagation();
+       toggleMenu();
+   });
 
-// Закрытие меню при клике на ссылки навигации (только на мобильных)
-navigationLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-        if (isMobile()) {
-            listContainerMobile.classList.remove("open");
-            isMenuOpen = false;
-            listContainerMobileToggle.setAttribute("data-checked", "false");
-        }
-    });
-});
+   // Закрытие меню при клике на ссылки навигации (только на мобильных)
+   navigationLinks.forEach(link => {
+       link.addEventListener("click", (e) => {
+           if (!isMobile()) return; // Пропускаем на десктопе
+           listContainerMobile.classList.remove("open");
+           isMenuOpen = false;
+           listContainerMobileToggle.setAttribute("data-checked", "false");
+       });
+   });
 
-// Предотвращаем закрытие меню при кликах на странице на десктопе
-document.addEventListener("click", (e) => {
-    if (!isMobile()) {
-        // На десктопе ничего не делаем
-        return;
-    }
-    // На мобильных: если клик вне меню и бургер-меню, закрываем меню
-    if (
-        isMenuOpen &&
-        !listContainerMobile.contains(e.target) &&
-        !listContainerMobileToggle.contains(e.target)
-    ) {
-        listContainerMobile.classList.remove("open");
-        isMenuOpen = false;
-        listContainerMobileToggle.setAttribute("data-checked", "false");
-    }
-});
-
-// При изменении размера окна сбрасываем состояние на мобильных
-window.addEventListener("resize", () => {
-    if (!isMobile()) {
-        listContainerMobile.classList.remove("open");
-        isMenuOpen = false;
-        listContainerMobileToggle.setAttribute("data-checked", "false");
-    } else if (!isMenuOpen) {
-        listContainerMobile.classList.remove("open");
-        listContainerMobileToggle.setAttribute("data-checked", "false");
-    }
-});
-</script>
+   // При изменении размера окна сбрасываем состояние на мобильных
+   window.addEventListener("resize", () => {
+       if (!isMobile()) {
+           listContainerMobile.classList.remove("open");
+           isMenuOpen = false;
+           listContainerMobileToggle.setAttribute("data-checked", "false");
+       } else if (!isMenuOpen) {
+           listContainerMobile.classList.remove("open");
+           listContainerMobileToggle.setAttribute("data-checked", "false");
+       }
+   });
+   </script>
     </script>
   </body>
 </html>
