@@ -536,11 +536,11 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         background: none !important;
         width: auto !important;
         height: auto !important;
-        visibility: visible !important; /* Гарантируем видимость */
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     #mheadRightContainer.open {
-        /* Убедимся, что класс open не влияет на десктоп */
         position: static !important;
         right: auto !important;
     }
@@ -554,11 +554,20 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     }
 
     #mheadRightContainer nav {
-    display: flex !important;
-    visibility: visible !important;
-}
-#mheadRightContainer nav section a {
-    display: block !important;
-    visibility: visible !important;
-}
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    #mheadRightContainer nav section {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    #mheadRightContainer nav section a {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
 }
