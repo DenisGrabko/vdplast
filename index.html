@@ -392,19 +392,38 @@ function toggleMenu() {
 }
 
 // Обработчик клика на бургер-меню (только для мобильных)
-listContainerMobileToggle.addEventListener("click", () => {
+listContainerMobileToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
     toggleMenu();
 });
 
 // Закрытие меню при клике на ссылки навигации (только на мобильных)
 navigationLinks.forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
         if (isMobile()) {
             listContainerMobile.classList.remove("open");
             isMenuOpen = false;
             listContainerMobileToggle.setAttribute("data-checked", "false");
         }
     });
+});
+
+// Предотвращаем закрытие меню при кликах на странице на десктопе
+document.addEventListener("click", (e) => {
+    if (!isMobile()) {
+        // На десктопе ничего не делаем
+        return;
+    }
+    // На мобильных: если клик вне меню и бургер-меню, закрываем меню
+    if (
+        isMenuOpen &&
+        !listContainerMobile.contains(e.target) &&
+        !listContainerMobileToggle.contains(e.target)
+    ) {
+        listContainerMobile.classList.remove("open");
+        isMenuOpen = false;
+        listContainerMobileToggle.setAttribute("data-checked", "false");
+    }
 });
 
 // При изменении размера окна сбрасываем состояние на мобильных
