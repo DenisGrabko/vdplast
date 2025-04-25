@@ -536,6 +536,13 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         background: none !important;
         width: auto !important;
         height: auto !important;
+        visibility: visible !important; /* Гарантируем видимость */
+    }
+
+    #mheadRightContainer.open {
+        /* Убедимся, что класс open не влияет на десктоп */
+        position: static !important;
+        right: auto !important;
     }
 
     #mheadToggle {
