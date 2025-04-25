@@ -94,12 +94,12 @@ li {
 }
 
 #masthead .container #mheadToggle[data-checked="true"] div:first-child {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(9px, 9px);
     background: var(--main-color);
 }
 
 #masthead .container #mheadToggle[data-checked="true"] div:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(9px, -9px);
     background: var(--main-color);
 }
 
@@ -284,7 +284,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 }
 
 .contentContainer#products .productPrevImg img {
-    width: 22em;
+    width: 62em;
 }
 
 .contentContainer#production .imgContainer {
@@ -306,7 +306,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#production .productionImg {
     display: block;
     margin: 0.5em;
-    width: 22em;
+    width: 62em;
     height: 19em;
     background-position: center;
     background-size: cover;
@@ -455,6 +455,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         background-color: #ffffff;
         width: 70vw;
         height: 100vh;
+        overflow-y: auto;
         transition: right 0.4s cubic-bezier(0.77, 0.2, 0.88, 1.0);
     }
 
