@@ -382,9 +382,11 @@ function toggleMenu() {
         if (!isMenuOpen) {
             listContainerMobile.classList.add("open");
             isMenuOpen = true;
+            listContainerMobileToggle.setAttribute("data-checked", "true");
         } else {
             listContainerMobile.classList.remove("open");
             isMenuOpen = false;
+            listContainerMobileToggle.setAttribute("data-checked", "false");
         }
     }
 }
@@ -400,6 +402,7 @@ navigationLinks.forEach(link => {
         if (isMobile()) {
             listContainerMobile.classList.remove("open");
             isMenuOpen = false;
+            listContainerMobileToggle.setAttribute("data-checked", "false");
         }
     });
 });
@@ -409,8 +412,10 @@ window.addEventListener("resize", () => {
     if (!isMobile()) {
         listContainerMobile.classList.remove("open");
         isMenuOpen = false;
+        listContainerMobileToggle.setAttribute("data-checked", "false");
     } else if (!isMenuOpen) {
         listContainerMobile.classList.remove("open");
+        listContainerMobileToggle.setAttribute("data-checked", "false");
     }
 });
 </script>
