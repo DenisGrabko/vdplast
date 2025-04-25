@@ -552,4 +552,13 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     #mheadRightContainerInfo {
         display: none !important;
     }
+
+    #mheadRightContainer nav {
+    display: flex !important;
+    visibility: visible !important;
+}
+#mheadRightContainer nav section a {
+    display: block !important;
+    visibility: visible !important;
+}
 }
