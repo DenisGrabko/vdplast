@@ -13,6 +13,7 @@
     />
     <meta
       property="og:description"
+.store
       content="Високоякісні поліетиленові плівки та пакувальні матеріали від компанії ВІДІПЛАСТ."
     />
     <meta
@@ -101,9 +102,7 @@
             <nav>
               <section class="mheadMenuNavigator">
                 <a href="#products" class="sectionNavigarionItem">Продукція</a>
-                <a href="#production" class="sectionNavigarionItem"
-                  >Виробництво</a
-                >
+                <a href="#production" class="sectionNavigarionItem">Виробництво</a>
                 <a href="#contacts" class="sectionNavigarionItem">Контакти</a>
                 <div class="clear"></div>
               </section>
@@ -286,7 +285,7 @@
       </div>
       <div class="contentContainer" id="contacts">
         <div class="mheadWrap"></div>
-        <header>​РЕКВІЗИТИ</header>
+        <header>РЕКВІЗИТИ</header>
 
         <div class="centertext">
           <div class="container">
@@ -331,101 +330,94 @@
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Получаем все ссылки с якорями
-        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        // Получаем элементы
+        const menuToggle = document.getElementById("mheadToggle");
+        const menuContainer = document.getElementById("mheadRightContainer");
+        const sections = [
+          document.getElementById("products"),
+          document.getElementById("production"),
+          document.getElementById("contacts"),
+        ];
 
-        // Добавляем обработчик события клика на каждую ссылку
-        anchorLinks.forEach(function (link) {
+        // Функция для проверки, является ли устройство мобильным
+        const isMobile = () => window.innerWidth <= 1000;
+
+        // Функция для закрытия меню
+        function closeMenu() {
+          if (isMobile()) {
+            menuContainer.style.right = "-750px";
+            menuContainer.classList.remove("open");
+          }
+        }
+
+        // Функция для открытия меню
+        function openMenu() {
+          if (isMobile()) {
+            menuContainer.style.right = "0";
+            menuContainer.classList.add("open");
+          }
+        }
+
+        // Переменная для отслеживания состояния меню
+        let isMenuOpen = false;
+
+        // Обработчик клика на кнопку меню
+        menuToggle.addEventListener("click", () => {
+          if (isMobile()) {
+            if (!isMenuOpen) {
+              openMenu();
+              isMenuOpen = true;
+              menuToggle.setAttribute("data-checked", "true");
+            } else {
+              closeMenu();
+              isMenuOpen = false;
+              menuToggle.setAttribute("data-checked", "false");
+            }
+          }
+        });
+
+        // Закрытие меню при клике на разделы (только на мобильных)
+        sections.forEach((section) => {
+          section.addEventListener("click", (e) => {
+            if (isMobile()) {
+              closeMenu();
+              menuToggle.setAttribute("data-checked", "false");
+            }
+          });
+        });
+
+        // Обработчик изменения размера окна
+        window.addEventListener("resize", () => {
+          if (!isMobile()) {
+            menuContainer.style.right = "";
+            menuContainer.classList.remove("open");
+            isMenuOpen = false;
+            menuToggle.setAttribute("data-checked", "false");
+          }
+        });
+
+        // Плавная прокрутка для якорных ссылок
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        anchorLinks.forEach((link) => {
           link.addEventListener("click", function (e) {
             e.preventDefault();
-
-            // Получаем цель якоря из атрибута href ссылки
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
-
             if (targetElement) {
               const headerHeight = 83;
-
-              // Получаем вертикальное смещение целевого элемента относительно верха страницы
-              const targetOffset =
-                targetElement.getBoundingClientRect().top + window.scrollY;
-
-              // Вычисляем позицию прокрутки, учитывая высоту хедера
-              const scrollToPosition = targetOffset - headerHeight;
-
+              const targetOffset = targetElement.getBoundingClientRect().top + window.scrollY;
               window.scrollTo({
-                top: scrollToPosition,
+                top: targetOffset - headerHeight,
                 behavior: "smooth",
               });
+              if (isMobile()) {
+                closeMenu();
+                menuToggle.setAttribute("data-checked", "false");
+              }
             }
           });
         });
       });
-    </script>
-<script>
-      const listContainerMobile = document.getElementById(
-        "mheadRightContainer"
-      );
-      const listContainerMobileToggle = document.getElementById("mheadToggle");
-
-      listContainerMobileToggle.addEventListener("click", () => {
-        if (
-          listContainerMobile.style.right === "0px" ||
-          listContainerMobile.style.right === ""
-        ) {
-          listContainerMobile.style.right = "auto";
-        } else {
-          listContainerMobile.style.right = "0px";
-        }
-      });
-    </script>
-
-    <script>
-      // Объявляем переменные для отслеживания состояния
-      let isMenuOpen = false; // Флаг, показывающий, открыто ли меню
-
-      // Получаем ссылки на элементы меню и разделы
-      const menuToggle = document.getElementById("mheadToggle");
-      const productsSection = document.getElementById("products");
-      const productionSection = document.getElementById("production");
-      const contactsSection = document.getElementById("contacts");
-
-      // Функция для закрытия меню
-      function closeMenu() {
-        // Закрываем меню
-        listContainerMobile.style.right = "-100%";
-        // Сбрасываем флаг
-        isMenuOpen = false;
-      }
-
-      // Обработчик клика на кнопку меню
-      listContainerMobileToggle.addEventListener("click", () => {
-        // Если меню не открыто, открываем его
-        if (!isMenuOpen) {
-          listContainerMobile.style.right = "0";
-          isMenuOpen = true;
-        } else {
-          // Если меню уже открыто, закрываем его
-          closeMenu();
-        }
-      });
-
-      // Обработчики клика на разделы
-      productsSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
-        closeMenu();
-      });
-
-      productionSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
-        closeMenu();
-      });
-
-      contactsSection.addEventListener("click", () => {
-        // Закрываем меню при клике на раздел
-        closeMenu();
-      });
-    </script>
     </script>
   </body>
 </html>
