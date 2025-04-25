@@ -94,12 +94,12 @@ li {
 }
 
 #masthead .container #mheadToggle[data-checked="true"] div:first-child {
-    transform: rotate(45deg) translate(9px, 9px);
+    transform: rotate(45deg) translate(9px, 7px);
     background: var(--main-color);
 }
 
 #masthead .container #mheadToggle[data-checked="true"] div:nth-child(3) {
-    transform: rotate(-45deg) translate(9px, -9px);
+    transform: rotate(-45deg) translate(9px, -7px);
     background: var(--main-color);
 }
 
