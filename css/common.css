@@ -501,7 +501,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 4.5em; /* Увеличиваем размер шрифта */
+        font-size: 3.0em; /* Увеличиваем размер шрифта */
         margin-top: 1em;
         gap: 0.5em;
         padding: 0 1em;
