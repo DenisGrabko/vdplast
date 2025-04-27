@@ -58,6 +58,7 @@ li {
 #masthead .container {
     display: flex;
     align-items: center;
+    justify-content: space-between; /* Логотип слева, навигация справа */
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -153,14 +154,16 @@ li {
     display: none;
 }
 
+#masthead .container #mheadRightContainer nav section {
+    display: flex; /* Используем flex для ссылок */
+    gap: 2em; /* Равномерные отступы между ссылками */
+}
+
 #masthead .container #mheadRightContainer nav section a {
     color: var(--main-color);
     font-size: 1.1em;
     letter-spacing: 0.1px;
     padding: 0.1em;
-    display: block;
-    float: left;
-    margin-left: 2em;
 }
 
 #masthead .container #mheadRightContainerInfo {
@@ -257,8 +260,9 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#products .imgContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Равномерное распределение */
     margin: 0 auto;
+    flex-wrap: wrap; /* На случай, если элементы не помещаются */
 }
 
 .contentContainer#products .productPrevImg {
@@ -266,6 +270,8 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     position: relative;
     height: 270px;
     overflow: hidden;
+    flex: 1; /* Элементы занимают равное пространство */
+    max-width: 32%; /* Ограничиваем ширину для трех элементов */
 }
 
 .contentContainer#products .productPrevImg div {
@@ -284,14 +290,17 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 }
 
 .contentContainer#products .productPrevImg img {
-    width: 62em;
+    width: 100%; /* Адаптируем ширину под контейнер */
+    height: 100%;
+    object-fit: cover; /* Изображения не искажаются */
 }
 
 .contentContainer#production .imgContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Равномерное распределение */
     margin: 0 auto;
+    flex-wrap: wrap; /* На случай, если элементы не помещаются */
 }
 
 /* EFFECTS for section "OurProduction" */
@@ -306,11 +315,13 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#production .productionImg {
     display: block;
     margin: 0.5em;
-    width: 62em;
+    width: 100%;
     height: 19em;
     background-position: center;
     background-size: cover;
     position: relative;
+    flex: 1; /* Равное пространство */
+    max-width: 32%; /* Для трех элементов */
 }
 
 .contentContainer#production .productionImg .middle {
@@ -319,6 +330,10 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     color: #ffffff;
     font-size: 1.2em;
     background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .contentContainer#contacts .centertext .phone,
@@ -415,6 +430,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     .contentContainer#products .productPrevImg {
         height: 400px;
+        max-width: 100%; /* На мобильных вся ширина */
     }
 
     .productPrevImgPHOTO {
@@ -505,6 +521,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     .contentContainer#products .productPrevImg img {
         width: 80vw;
+        height: 400px !important;
     }
 
     .contentContainer#production .imgContainer {
@@ -513,6 +530,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     .contentContainer#production .imgContainer .productionImg {
         width: 80vw;
+        max-width: 100%;
     }
 
     .contentContainer#production .productionImg .middle {
@@ -534,6 +552,10 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
 /* Стили для десктопа с максимальной специфичностью */
 @media (min-width: 1001px) {
+    #masthead .container {
+        justify-content: space-between; /* Явно выравниваем */
+    }
+
     #masthead .container #mheadRightContainer {
         position: static !important;
         right: auto !important;
@@ -551,6 +573,19 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         position: static !important;
         right: auto !important;
         display: flex !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    #masthead .container #mheadRightContainer nav section {
+        display: flex !important;
+        gap: 2em !important; /* Ссылки с отступами */
+    }
+
+    #masthead .container #mheadRightContainer nav section a {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         transform: none !important;
         transition: none !important;
     }
@@ -579,11 +614,25 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         transition: none !important;
     }
 
-    #masthead .container #mheadRightContainer nav section a {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
+    .contentContainer#products .imgContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contentContainer#products .productPrevImg {
+        max-width: 32%; /* Для трех элементов */
+    }
+
+    .contentContainer#products .productPrevImg img {
+        width: 100%;
+    }
+
+    .contentContainer#production .imgContainer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .contentContainer#production .productionImg {
+        max-width: 32%;
     }
 }
