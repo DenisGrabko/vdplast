@@ -144,13 +144,17 @@ li {
     margin-right: 1em;
 }
 
+/* Для десктопной версии */
 #masthead .container #mheadRightContainer {
     display: flex;
     align-items: center;
+    flex-grow: 1; /* Занимает всю доступную ширину */
 }
 
-#masthead .container #mheadRightContainer .mheadWrap {
-    display: none;
+#masthead .container #mheadRightContainer nav section {
+    display: flex;
+    justify-content: space-around; /* Равномерное распределение ссылок */
+    width: 100%; /* Убедимся, что секция занимает всю ширину */
 }
 
 #masthead .container #mheadRightContainer nav section a {
@@ -159,8 +163,7 @@ li {
     letter-spacing: 0.1px;
     padding: 0.1em;
     display: block;
-    float: left;
-    margin-left: 2em;
+    margin-left: 0; /* Убираем margin-left, так как распределение через flex */
 }
 
 #masthead .container #mheadRightContainerInfo {
