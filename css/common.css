@@ -287,7 +287,15 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 }
 
 .contentContainer#products .productPrevImg img {
-    width: 62em;
+    width: 22em; /* Уменьшаем ширину для десктопной версии */
+    height: auto; /* Сохраняем пропорции */
+}
+
+.contentContainer#products .productPrevImg {
+    margin: 0 0.5em 0.5em 0.5em;
+    position: relative;
+    height: auto; /* Убираем фиксированную высоту */
+    overflow: hidden;
 }
 
 .contentContainer#production .imgContainer {
@@ -309,11 +317,24 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#production .productionImg {
     display: block;
     margin: 0.5em;
-    width: 62em;
-    height: 19em;
+    width: 22em; /* Уменьшаем ширину для десктопной версии */
+    height: 15em; /* Уменьшаем высоту */
     background-position: center;
     background-size: cover;
     position: relative;
+}
+
+/* Задаем background-image через CSS вместо inline-стилей */
+.contentContainer#production .productionImg:nth-child(1) {
+    background-image: url(./images/Гранули3.webp);
+}
+
+.contentContainer#production .productionImg:nth-child(2) {
+    background-image: url(./images/2rulons2.jpg);
+}
+
+.contentContainer#production .productionImg:nth-child(3) {
+    background-image: url(./images/global-machine.jpg);
 }
 
 .contentContainer#production .productionImg .middle {
