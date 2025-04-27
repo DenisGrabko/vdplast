@@ -452,16 +452,16 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         position: fixed;
         top: 0;
         right: -750px;
-        display: flex; /* Используем flex для вертикального расположения */
-        flex-direction: column; /* Элементы друг под другом */
-        align-items: center; /* Центрируем элементы */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         background-color: #ffffff;
-        width: 70vw; /* Сохраняем ширину */
-        min-width: 280px; /* Минимальная ширина для маленьких экранов */
+        width: 70vw;
+        min-width: 280px;
         height: 100vh;
         overflow-y: auto;
         transition: right 0.4s cubic-bezier(0.77, 0.2, 0.88, 1.0);
-        padding-bottom: 20px; /* Нижний отступ для прокрутки */
+        padding-bottom: 20px;
     }
 
     #masthead .container #mheadRightContainer.open {
@@ -480,26 +480,30 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     #masthead .container #mheadRightContainer nav section {
         display: flex;
-        flex-direction: column; /* Ссылки друг под другом */
+        flex-direction: column;
         width: 100%;
     }
 
     #masthead .container #mheadRightContainer nav section a {
-        float: none;
-        display: block;
+        display: flex; /* Используем flex для центрирования */
+        justify-content: center; /* Горизонтальное центрирование */
+        align-items: center; /* Вертикальное центрирование */
+        width: 100%; /* Полная ширина блока */
+        height: 60px; /* Фиксированная высота для кнопки */
         padding: 0.8em 1em;
         border-bottom: 1px solid #dbdbdb;
-        font-size: 1.5em; /* Уменьшенный размер шрифта */
-        text-align: center; /* Центрируем текст */
+        font-size: 1.5em;
+        text-align: center;
+        box-sizing: border-box; /* Учитываем padding в размерах */
     }
 
     #masthead .container #mheadRightContainerInfo {
         display: flex;
         flex-direction: column;
         align-items: center;
-        font-size: 1.2em; /* Уменьшенный размер шрифта */
+        font-size: 1.5em; /* Увеличиваем размер шрифта */
         margin-top: 1em;
-        gap: 0.5em; /* Меньшие отступы между элементами */
+        gap: 0.5em;
         padding: 0 1em;
     }
 
