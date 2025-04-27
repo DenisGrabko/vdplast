@@ -144,17 +144,13 @@ li {
     margin-right: 1em;
 }
 
-/* Для десктопной версии */
 #masthead .container #mheadRightContainer {
     display: flex;
     align-items: center;
-    flex-grow: 1; /* Занимает всю доступную ширину */
 }
 
-#masthead .container #mheadRightContainer nav section {
-    display: flex;
-    justify-content: space-around; /* Равномерное распределение ссылок */
-    width: 100%; /* Убедимся, что секция занимает всю ширину */
+#masthead .container #mheadRightContainer .mheadWrap {
+    display: none;
 }
 
 #masthead .container #mheadRightContainer nav section a {
@@ -163,7 +159,8 @@ li {
     letter-spacing: 0.1px;
     padding: 0.1em;
     display: block;
-    margin-left: 0; /* Убираем margin-left, так как распределение через flex */
+    float: left;
+    margin-left: 2em;
 }
 
 #masthead .container #mheadRightContainerInfo {
@@ -287,15 +284,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 }
 
 .contentContainer#products .productPrevImg img {
-    width: 22em; /* Уменьшаем ширину для десктопной версии */
-    height: auto; /* Сохраняем пропорции */
-}
-
-.contentContainer#products .productPrevImg {
-    margin: 0 0.5em 0.5em 0.5em;
-    position: relative;
-    height: auto; /* Убираем фиксированную высоту */
-    overflow: hidden;
+    width: 62em;
 }
 
 .contentContainer#production .imgContainer {
@@ -317,24 +306,11 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#production .productionImg {
     display: block;
     margin: 0.5em;
-    width: 22em; /* Уменьшаем ширину для десктопной версии */
-    height: 15em; /* Уменьшаем высоту */
+    width: 62em;
+    height: 19em;
     background-position: center;
     background-size: cover;
     position: relative;
-}
-
-/* Задаем background-image через CSS вместо inline-стилей */
-.contentContainer#production .productionImg:nth-child(1) {
-    background-image: url(./images/Гранули3.webp);
-}
-
-.contentContainer#production .productionImg:nth-child(2) {
-    background-image: url(./images/2rulons2.jpg);
-}
-
-.contentContainer#production .productionImg:nth-child(3) {
-    background-image: url(./images/global-machine.jpg);
 }
 
 .contentContainer#production .productionImg .middle {
