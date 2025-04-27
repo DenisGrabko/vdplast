@@ -55,10 +55,10 @@ li {
     transition: padding 0.5s ease;
 }
 
-#masthead .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Логотип слева, навигация справа */
+#root #masthead .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -155,8 +155,8 @@ li {
 }
 
 #masthead .container #mheadRightContainer nav section {
-    display: flex; /* Используем flex для ссылок */
-    gap: 2em; /* Равномерные отступы между ссылками */
+    display: flex;
+    gap: 2em;
 }
 
 #masthead .container #mheadRightContainer nav section a {
@@ -260,9 +260,9 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 .contentContainer#products .imgContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Равномерное распределение */
+    justify-content: space-between;
     margin: 0 auto;
-    flex-wrap: wrap; /* На случай, если элементы не помещаются */
+    flex-wrap: wrap;
 }
 
 .contentContainer#products .productPrevImg {
@@ -270,8 +270,8 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     position: relative;
     height: 270px;
     overflow: hidden;
-    flex: 1; /* Элементы занимают равное пространство */
-    max-width: 32%; /* Ограничиваем ширину для трех элементов */
+    flex: 1;
+    max-width: 32%;
 }
 
 .contentContainer#products .productPrevImg div {
@@ -290,20 +290,19 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 }
 
 .contentContainer#products .productPrevImg img {
-    width: 100%; /* Адаптируем ширину под контейнер */
+    width: 100%;
     height: 100%;
-    object-fit: cover; /* Изображения не искажаются */
+    object-fit: cover;
 }
 
 .contentContainer#production .imgContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Равномерное распределение */
+    justify-content: space-between;
     margin: 0 auto;
-    flex-wrap: wrap; /* На случай, если элементы не помещаются */
+    flex-wrap: wrap;
 }
 
-/* EFFECTS for section "OurProduction" */
 .contentContainer#products .productPrevImg:hover .productPrevImgDescription {
     transform: translate(0%, 0%);
 }
@@ -320,8 +319,8 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     background-position: center;
     background-size: cover;
     position: relative;
-    flex: 1; /* Равное пространство */
-    max-width: 32%; /* Для трех элементов */
+    flex: 1;
+    max-width: 32%;
 }
 
 .contentContainer#production .productionImg .middle {
@@ -430,7 +429,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     .contentContainer#products .productPrevImg {
         height: 400px;
-        max-width: 100%; /* На мобильных вся ширина */
+        max-width: 100%;
     }
 
     .productPrevImgPHOTO {
@@ -449,30 +448,20 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         z-index: 2;
     }
 
-    #masthead .container #mheadRightContainer nav section a {
-        margin: 0;
-        font-size: 2em;
-        z-index: 3;
-    }
-
-    #masthead .container #mheadRightContainerInfo {
-        display: flex;
-        flex-direction: column;
-        font-size: 2.7em;
-        margin-top: 20px;
-        gap: 20px;
-    }
-
     #masthead .container #mheadRightContainer {
         position: fixed;
         top: 0;
         right: -750px;
-        display: block;
+        display: flex; /* Используем flex для вертикального расположения */
+        flex-direction: column; /* Элементы друг под другом */
+        align-items: center; /* Центрируем элементы */
         background-color: #ffffff;
-        width: 70vw;
+        width: 70vw; /* Сохраняем ширину */
+        min-width: 280px; /* Минимальная ширина для маленьких экранов */
         height: 100vh;
         overflow-y: auto;
         transition: right 0.4s cubic-bezier(0.77, 0.2, 0.88, 1.0);
+        padding-bottom: 20px; /* Нижний отступ для прокрутки */
     }
 
     #masthead .container #mheadRightContainer.open {
@@ -483,23 +472,46 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
         display: none;
     }
 
-    #masthead .container #mheadRightContainerInfo {
-        display: block;
-        margin-top: 0;
-        padding-top: 20px;
+    #masthead .container #mheadRightContainer nav {
+        width: 100%;
+        padding: 1em 0;
+        padding-top: 80px;
     }
 
-    #masthead .container #mheadRightContainer nav {
-        width: 95%;
-        padding: 2em 0;
-        padding-top: 100px;
+    #masthead .container #mheadRightContainer nav section {
+        display: flex;
+        flex-direction: column; /* Ссылки друг под другом */
+        width: 100%;
     }
 
     #masthead .container #mheadRightContainer nav section a {
         float: none;
         display: block;
-        padding: 1.2em;
+        padding: 0.8em 1em;
         border-bottom: 1px solid #dbdbdb;
+        font-size: 1.5em; /* Уменьшенный размер шрифта */
+        text-align: center; /* Центрируем текст */
+    }
+
+    #masthead .container #mheadRightContainerInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1.2em; /* Уменьшенный размер шрифта */
+        margin-top: 1em;
+        gap: 0.5em; /* Меньшие отступы между элементами */
+        padding: 0 1em;
+    }
+
+    #masthead .container #mheadRightContainerInfo div {
+        text-align: center;
+    }
+
+    #masthead .container #mheadRightContainer #langSwitch {
+        display: flex;
+        justify-content: center;
+        margin: 1em 0;
+        padding: 0 1em;
     }
 
     #masthead .container #mheadToggle {
@@ -552,8 +564,8 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
 /* Стили для десктопа с максимальной специфичностью */
 @media (min-width: 1001px) {
-    #masthead .container {
-        justify-content: space-between; /* Явно выравниваем */
+    #root #masthead .container {
+        justify-content: space-between !important;
     }
 
     #masthead .container #mheadRightContainer {
@@ -579,7 +591,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
 
     #masthead .container #mheadRightContainer nav section {
         display: flex !important;
-        gap: 2em !important; /* Ссылки с отступами */
+        gap: 2em !important;
     }
 
     #masthead .container #mheadRightContainer nav section a {
@@ -620,7 +632,7 @@ screen and (min-resolution: 2dppx) and (min-width: 428px) {
     }
 
     .contentContainer#products .productPrevImg {
-        max-width: 32%; /* Для трех элементов */
+        max-width: 32%;
     }
 
     .contentContainer#products .productPrevImg img {
